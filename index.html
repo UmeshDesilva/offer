@@ -5,26 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redirecting...</title>
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const target = params.get("url");
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+      const targetUrl = params.get("url");
+      const adPageUrl = "https://perchincomenotorious.com/df2p0mw14t?key=54c02f6f1d3be48f073acb84e201b789";
 
-    // Wait until the DOM is fully loaded before showing ad
-    window.onload = () => {
-      if (target) {
-        // Wait 5 seconds, then redirect
+      if (targetUrl) {
+        // Open ad page in new tab/window
+        window.open(adPageUrl, '_blank');
+
+        // Redirect current tab to target URL after 5 seconds
         setTimeout(() => {
-          window.location.href = target;
+          window.location.href = targetUrl;
         }, 5000);
       }
     };
   </script>
-  <style>
-    html, body { margin: 0; padding: 0; height: 100%; }
-    iframe { width: 100%; height: 100vh; border: none; }
-  </style>
 </head>
 <body>
-  <!-- This ad iframe is visible for 5 seconds -->
-  <iframe src="https://perchincomenotorious.com/zegwhtdu0k?key=c25516e89ddca8baedf0ed1441190426"></iframe>
+  <p>Redirecting you shortly...</p>
 </body>
 </html>
