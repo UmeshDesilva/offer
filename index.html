@@ -7,11 +7,16 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const target = params.get("url");
-    if (target) {
-      setTimeout(() => {
-        window.location.href = target;
-      }, 5000);
-    }
+
+    // Wait until the DOM is fully loaded before showing ad
+    window.onload = () => {
+      if (target) {
+        // Wait 5 seconds, then redirect
+        setTimeout(() => {
+          window.location.href = target;
+        }, 5000);
+      }
+    };
   </script>
   <style>
     html, body { margin: 0; padding: 0; height: 100%; }
@@ -19,6 +24,7 @@
   </style>
 </head>
 <body>
+  <!-- This ad iframe is visible for 5 seconds -->
   <iframe src="https://perchincomenotorious.com/df2p0mw14t?key=54c02f6f1d3be48f073acb84e201b789"></iframe>
 </body>
 </html>
