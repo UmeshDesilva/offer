@@ -1,28 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redirecting...</title>
+</head>
+<body>
+  <p>Redirecting you shortly...</p>
+  <a id="adLink" href="https://perchincomenotorious.com/zegwhtdu0k?key=c25516e89ddca8baedf0ed1441190426" target="_blank" style="display:none">Ad Link</a>
+
   <script>
-    window.onload = function() {
-      const params = new URLSearchParams(window.location.search);
-      const targetUrl = params.get("url");
-      const adPageUrl = "https://example.com";
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get("url");
 
-      if (targetUrl) {
-        // Open ad page in new tab/window
-        window.open(adPageUrl, '_blank');
+    // Try triggering fake click
+    window.onload = () => {
+      const adLink = document.getElementById("adLink");
 
-        // Redirect current tab to target URL after 5 seconds
+      // Simulate a click to open ad in new tab (might be blocked)
+      adLink.click();
+
+      // Redirect to target after 5 seconds
+      if (target) {
         setTimeout(() => {
-          window.location.href = targetUrl;
+          window.location.href = target;
         }, 5000);
       }
     };
   </script>
-</head>
-<body>
-  <p>Redirecting you shortly...</p>
 </body>
 </html>
