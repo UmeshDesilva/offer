@@ -23,8 +23,8 @@
 <body>
   <h2>Redirect Notice</h2>
   <p>
-    Click the button below to continue through an ad on 
-    <span class="domain" id="ad-domain">your destination</span>.
+    Click the button below to continue to 
+    <span class="domain" id="to-domain">your destination</span>. An ad will be shown first.
   </p>
   <button onclick="redirectUser()">Continue</button>
 
@@ -36,7 +36,7 @@
 
     function getDomain(url) {
       try {
-        return new URL(url).hostname;
+        return new URL(url).hostname.replace(/^www\./, '');
       } catch (e) {
         return "unknown site";
       }
@@ -56,10 +56,10 @@
       }
     }
 
-    // Display only domain
-    const adUrl = getQueryParam("ad");
-    const domain = getDomain(adUrl);
-    document.getElementById("ad-domain").textContent = domain;
+    // Display only the domain of the "to" URL
+    const toUrl = getQueryParam("to");
+    const toDomain = getDomain(toUrl);
+    document.getElementById("to-domain").textContent = toDomain;
   </script>
 </body>
 </html>
