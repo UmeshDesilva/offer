@@ -5,77 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redirecting...</title>
   <script>
-    // Get the target URL from query parameters
     const params = new URLSearchParams(window.location.search);
     const target = params.get("url");
 
+    // Wait until the DOM is fully loaded before showing ad
     window.onload = () => {
-      // Validate target URL
-      const isValidUrl = (url) => {
-        try {
-          new URL(url);
-          return url.startsWith("http://") || url.startsWith("https://");
-        } catch {
-          return false;
-        }
-      };
-
-      if (target && isValidUrl(target)) {
-        // Redirect to target after 3 seconds
+      if (target) {
+        // Wait 5 seconds, then redirect
         setTimeout(() => {
           window.location.href = target;
-        }, 3000);
-      } else {
-        // Fallback if no valid target URL
-        document.getElementById("message").innerText = "No valid target URL provided. Please check the link.";
-        document.getElementById("ad").style.display = "none";
-        document.getElementById("continueLink").style.display = "none";
+        }, 5000);
       }
     };
   </script>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
-    #message {
-      text-align: center;
-      font-size: 1.2em;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    #ad img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #ccc;
-      cursor: pointer;
-    }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-      margin-top: 10px;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    iframe { width: 100%; height: 100vh; border: none; }
   </style>
 </head>
 <body>
-  <div id="message">
-    Redirecting in 3 seconds... <br />
-    <a id="continueLink" href="#" onclick="window.location.href=target">Click here to continue</a>
-  </div>
-  <div id="ad">
-    <a href="https://perchincomenotorious.com/df2p0mw14t?key=54c02f6f1d3be48f073acb84e201b789" target="_blank">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNDmcwXH-LFqREpPMbsWQS0sNuIdMwYDC3VA&s" alt="Advertisement" />
-    </a>
-  </div>
+  <!-- This ad iframe is visible for 5 seconds -->
+  <iframe src="https://perchincomenotorious.com/zegwhtdu0k?key=c25516e89ddca8baedf0ed1441190426"></iframe>
 </body>
 </html>
