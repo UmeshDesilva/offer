@@ -10,15 +10,26 @@
     const target = params.get("url");
 
     window.onload = () => {
-      if (target) {
+      // Validate target URL
+      const isValidUrl = (url) => {
+        try {
+          new URL(url);
+          return url.startsWith("http://") || url.startsWith("https://");
+        } catch {
+          return false;
+        }
+      };
+
+      if (target && isValidUrl(target)) {
         // Redirect to target after 3 seconds
         setTimeout(() => {
           window.location.href = target;
         }, 3000);
       } else {
-        // Fallback if no target URL
-        document.getElementById("message").innerText = "No target URL provided. Please check the link.";
+        // Fallback if no valid target URL
+        document.getElementById("message").innerText = "No valid target URL provided. Please check the link.";
         document.getElementById("ad").style.display = "none";
+        document.getElementById("continueLink").style.display = "none";
       }
     };
   </script>
@@ -44,6 +55,7 @@
       max-width: 100%;
       height: auto;
       border: 1px solid #ccc;
+      cursor: pointer;
     }
     a {
       color: #0066cc;
@@ -58,10 +70,9 @@
 <body>
   <div id="message">
     Redirecting in 3 seconds... <br />
-    <a href="#" onclick="window.location.href=target">Click here to continue</a>
+    <a id="continueLink" href="#" onclick="window.location.href=target">Click here to continue</a>
   </div>
   <div id="ad">
-    <!-- Replace with your ad image or content -->
     <a href="https://perchincomenotorious.com/df2p0mw14t?key=54c02f6f1d3be48f073acb84e201b789" target="_blank">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNDmcwXH-LFqREpPMbsWQS0sNuIdMwYDC3VA&s" alt="Advertisement" />
     </a>
