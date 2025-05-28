@@ -5,26 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redirecting...</title>
   <script>
+    // Get the target URL from query parameters
     const params = new URLSearchParams(window.location.search);
     const target = params.get("url");
 
-    // Wait until the DOM is fully loaded before showing ad
     window.onload = () => {
       if (target) {
-        // Wait 5 seconds, then redirect
+        // Open ad in a new tab
+        window.open("https://perchincomenotorious.com/df2p0mw14t?key=54c02f6f1d3be48f073acb84e201b789", "_blank");
+        // Redirect to target after 3 seconds
         setTimeout(() => {
           window.location.href = target;
-        }, 5000);
+        }, 3000);
+      } else {
+        // Fallback if no target URL is provided
+        document.getElementById("message").innerText = "No target URL provided. Please check the link.";
       }
     };
   </script>
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; }
-    iframe { width: 100%; height: 100vh; border: none; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    #message {
+      text-align: center;
+      font-size: 1.2em;
+      color: #333;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <!-- This ad iframe is visible for 5 seconds -->
-  <iframe src="https://l8.nu/-bb4"></iframe>
+  <div id="message">
+    Redirecting in 3 seconds... <br />
+    <a href="#" onclick="window.location.href=target">Click here to continue</a>
+  </div>
 </body>
 </html>
