@@ -3,13 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="5;url=https://www.sciencefocus.com/science/fun-facts">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      text-align: center;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+  <h2>Redirect Notice</h2>
+  <p>Click the button below to continue to your destination. An ad will be shown first.</p>
+  <button onclick="redirectUser()">Continue</button>
+
   <script>
-    // Open Adsterra ad in a new tab
-    window.open("https://perchincomenotorious.com/df2p0mw14t?key=54c02f6f1d3be48f073acb84e201b789", "_blank");
+    function redirectUser() {
+      // Open Adsterra ad in a new tab
+      window.open("https://perchincomenotorious.com/df2p0mw14t?key=54c02f6f1d3be48f073acb84e201b789", "_blank");
+
+      // Redirect current tab to final destination after short delay
+      setTimeout(function () {
+        window.location.href = "https://www.sciencefocus.com/science/fun-facts";
+      }, 1000); // You can increase this delay if needed
+    }
   </script>
-  <p>You are being redirected to the destination. Please wait 5 seconds...</p>
 </body>
 </html>
