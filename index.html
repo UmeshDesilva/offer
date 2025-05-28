@@ -22,6 +22,57 @@
   <button onclick="redirectUser()">Continue</button>
 
   <script>
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    function redirectUser() {
+      const adUrl = getQueryParam("ad");
+      const toUrl = getQueryParam("to");
+
+      if (adUrl && toUrl) {
+        window.open(adUrl, "_blank");
+        setTimeout(() => {
+          window.location.href = toUrl;
+        }, 1000); // Adjust delay as needed
+      } else {
+        alert("Missing 'ad' or 'to' parameter in the URL.");
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+<!-- Below is the static page of the above url doesn't change -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      text-align: center;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Redirect Notice</h2>
+  <p>Click the button below to continue to your destination. An ad will be shown first.</p>
+  <button onclick="redirectUser()">Continue</button>
+
+  <script>
     function redirectUser() {
       // Open Adsterra ad in a new tab
       window.open("https://perchincomenotorious.com/df2p0mw14t?key=54c02f6f1d3be48f073acb84e201b789", "_blank");
@@ -33,4 +84,39 @@
     }
   </script>
 </body>
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get("url");
+
+    // Wait until the DOM is fully loaded before showing ad
+    window.onload = () => {
+      if (target) {
+        // Wait 5 seconds, then redirect
+        setTimeout(() => {
+          window.location.href = target;
+        }, 5000);
+      }
+    };
+  </script>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; }
+    iframe { width: 100%; height: 100vh; border: none; }
+  </style>
+</head>
+<body>
+  <!-- This ad iframe is visible for 5 seconds -->
+  <iframe src="https://perchincomenotorious.com/zegwhtdu0k?key=c25516e89ddca8baedf0ed1441190426"></iframe>
+</body>
 </html>
+ -->
