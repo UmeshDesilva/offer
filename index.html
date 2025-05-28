@@ -2,31 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting...</title>
+  <title>Verifying...</title>
   <style>
     body {
+      background-color: #111;
+      color: #fff;
       font-family: Arial, sans-serif;
-      padding: 40px;
       text-align: center;
+      padding-top: 100px;
     }
-    button {
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .verifying {
+      margin-top: 20px;
       font-size: 18px;
+    }
+    .button {
+      margin-top: 40px;
       padding: 10px 20px;
+      font-size: 18px;
       cursor: pointer;
     }
     .domain {
+      color: #0af;
       font-weight: bold;
-      color: #0066cc;
     }
   </style>
 </head>
 <body>
-  <h2>Redirect Notice</h2>
-  <p>
-    Click the button below to continue to 
-    <span class="domain" id="to-domain">your destination</span>. An ad will be shown first.
-  </p>
-  <button onclick="redirectUser()">Continue</button>
+  <div class="logo">Redirect Service</div>
+  <div class="verifying">
+    You’re on your way to <span class="domain" id="to-domain">your destination</span>.<br>
+    A sponsored ad will open in a new tab. Please wait a moment...
+  </div>
+  <button class="button" onclick="redirectUser()">Continue</button>
 
   <script>
     function getQueryParam(name) {
@@ -56,7 +68,6 @@
       }
     }
 
-    // Display only the domain of the "to" URL
     const toUrl = getQueryParam("to");
     const toDomain = getDomain(toUrl);
     document.getElementById("to-domain").textContent = toDomain;
