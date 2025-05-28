@@ -14,17 +14,32 @@
       padding: 10px 20px;
       cursor: pointer;
     }
+    .domain {
+      font-weight: bold;
+      color: #0066cc;
+    }
   </style>
 </head>
 <body>
   <h2>Redirect Notice</h2>
-  <p>Click the button below to continue to your destination. An ad will be shown first.</p>
+  <p>
+    Click the button below to continue through an ad on 
+    <span class="domain" id="ad-domain">your destination</span>.
+  </p>
   <button onclick="redirectUser()">Continue</button>
 
   <script>
     function getQueryParam(name) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(name);
+    }
+
+    function getDomain(url) {
+      try {
+        return new URL(url).hostname;
+      } catch (e) {
+        return "unknown site";
+      }
     }
 
     function redirectUser() {
@@ -35,14 +50,20 @@
         window.open(adUrl, "_blank");
         setTimeout(() => {
           window.location.href = toUrl;
-        }, 1000); // Adjust delay as needed
+        }, 1000);
       } else {
         alert("Missing 'ad' or 'to' parameter in the URL.");
       }
     }
+
+    // Display only domain
+    const adUrl = getQueryParam("ad");
+    const domain = getDomain(adUrl);
+    document.getElementById("ad-domain").textContent = domain;
   </script>
 </body>
 </html>
+
 
 
 
