@@ -9,13 +9,8 @@
       padding: 40px;
       text-align: center;
       background-color: #222;
-      color: #e0e0e0; /* Light gray text for better contrast */
+      color: #e0e0e0;
       margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
     h2 {
       font-size: 28px;
@@ -30,15 +25,15 @@
     }
     .domain {
       font-weight: bold;
-      color: #1e90ff; /* Softer blue for a professional tone */
+      color: #1e90ff;
     }
     .captcha-container {
       margin: 20px auto;
       padding: 25px;
       border: none;
-      background-color: #333; /* Slightly lighter than body background */
+      background-color: #333;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       display: inline-block;
       max-width: 300px;
     }
@@ -57,14 +52,14 @@
       font-size: 16px;
       padding: 10px 25px;
       cursor: pointer;
-      background-color: #1e90ff; /* Matching the domain color */
+      background-color: #1e90ff;
       color: white;
       border: none;
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
     button:hover:not(:disabled) {
-      background-color: #4682b4; /* Slightly darker blue on hover */
+      background-color: #4682b4;
     }
     button:disabled {
       background-color: #666;
@@ -72,13 +67,28 @@
     }
     .security-notice {
       font-size: 14px;
-      color: #a0a0a0; /* Lighter gray for secondary text */
+      color: #a0a0a0;
       margin-top: 15px;
+    }
+    .domain-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .favicon {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
     }
   </style>
 </head>
 <body>
-  <h2 id="to-domain-heading"></h2>
+  <h2>
+    <span class="domain-container">
+      <img id="to-domain-favicon-heading" class="favicon" src="" alt="Favicon">
+      <span id="to-domain-heading"></span>
+    </span>
+  </h2>
   <p>
     Verify you are human by completing the action below.
   </p>
@@ -137,11 +147,17 @@
       }
     }
 
-    // Display only the domain of the "to" URL
+    // Display the domain and its favicon
     const toUrl = getQueryParam("to");
     const toDomain = getDomain(toUrl);
-    document.getElementById("to-domain").textContent = toDomain;
+    const faviconUrl = `https://www.google.com/s2/favicons?domain=${toDomain}`;
+
+    // Update heading
     document.getElementById("to-domain-heading").textContent = toDomain;
+    document.getElementById("to-domain-favicon-heading").src = faviconUrl;
+
+    // Update security notice (without favicon)
+    document.getElementById("to-domain").textContent = toDomain;
 
     // Generate and set CAPTCHA
     let captcha = generateCaptcha();
@@ -161,7 +177,6 @@
   </script>
 </body>
 </html>
-
 
 
 
