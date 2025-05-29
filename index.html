@@ -5,51 +5,82 @@
   <title>Redirecting...</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       padding: 40px;
       text-align: center;
-      background-color: #f5f5f5;
+      background-color: #222;
+      color: #e0e0e0; /* Light gray text for better contrast */
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h2 {
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 10px 0;
     }
     .domain {
       font-weight: bold;
-      color: #0066cc;
+      color: #1e90ff; /* Softer blue for a professional tone */
     }
     .captcha-container {
       margin: 20px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
+      padding: 25px;
+      border: none;
+      background-color: #333; /* Slightly lighter than body background */
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
       display: inline-block;
+      max-width: 300px;
     }
     input {
       font-size: 16px;
-      padding: 5px;
-      margin: 10px;
-      width: 60px;
+      padding: 8px;
+      margin: 10px 0;
+      width: 80px;
+      background-color: #444;
+      color: #e0e0e0;
+      border: 1px solid #555;
+      border-radius: 5px;
+      text-align: center;
     }
     button {
-      font-size: 18px;
-      padding: 10px 20px;
+      font-size: 16px;
+      padding: 10px 25px;
       cursor: pointer;
-      background-color: #0066cc;
+      background-color: #1e90ff; /* Matching the domain color */
       color: white;
       border: none;
       border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover:not(:disabled) {
+      background-color: #4682b4; /* Slightly darker blue on hover */
     }
     button:disabled {
-      background-color: #cccccc;
+      background-color: #666;
       cursor: not-allowed;
     }
     .security-notice {
       font-size: 14px;
-      color: #666;
-      margin-top: 10px;
+      color: #a0a0a0; /* Lighter gray for secondary text */
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
   <h2 id="to-domain-heading"></h2>
   <p>
-    Verifying you are human. This may take a few seconds.
+    Verify you are human by completing the action below.
   </p>
   <div class="captcha-container">
     <p id="captcha-question">Loading CAPTCHA...</p>
@@ -130,7 +161,6 @@
   </script>
 </body>
 </html>
-
 
 
 
